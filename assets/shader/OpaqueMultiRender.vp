@@ -1,0 +1,33 @@
+#version 330
+// Vertex position in worldspace
+layout(location = 0) in vec3 vVertex;
+
+// Vertexnormal direction in worldspace
+layout(location = 1) in vec3 vNormal;
+
+// UV texture coordinates
+layout(location = 2) in vec3 vTangent;
+
+// UV texture coordinates
+layout(location = 3) in vec2 vUV;
+
+out vec2 UV;
+out vec3 vertPosition_global;
+out vec3 vertNormals_global;
+out vec3 vertTangents_global;
+out vec3 vertNormals_view;
+
+uniform mat4 ModelMatrix;
+uniform mat4 NormalMatrix;
+uniform mat4 ViewMatrix;
+uniform mat4 ProjectionMatrix;
+
+void main()
+{
+   gl_Position = ProjectionMatrix * ViewMatrix * ModelMatrix * vec4(vVertex, 1.0f);
+   vertPosition_global = (ModelMatrix * vec4(vVertex, 1.0f)).xyz;
+   vertNormals_global = (NormalMatrix * vec4(vNormal, 0.0f)).xyz;
+   vertTangents_global = (NormalMatrix * vec4(vTangent, 0.0f)).xyz;
+   vertNormals_view = (ViewMatrix * ModelMatrix * vec4(vNormal, 0.0f)).xyz;
+   UV = vUV;
+}
