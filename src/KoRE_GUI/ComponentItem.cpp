@@ -93,26 +93,32 @@ void koregui::ComponentItem::paint(QPainter* painter,
   switch (_component->getType()) {
   case kore::COMPONENT_TRANSFORM:
     b.setColor(QColor(35,203,173));
+    //b.setColor(QColor(255,210,182));
     t.setText("Transform");
     break;
   case kore::COMPONENT_MESH:
     b.setColor(QColor(252,210,89));
+    //b.setColor(QColor(255,187,157));
     t.setText("Mesh");
     break;
   case kore::COMPONENT_CAMERA:
-    b.setColor(QColor(199,89,214));
+    b.setColor(QColor(244,179,138));
+    //b.setColor(QColor(252,210,89));
     t.setText("Camera");
     break;
   case kore::COMPONENT_LIGHT:
     b.setColor(QColor(250,123,28));
+    //b.setColor(QColor(197,136,108));
     t.setText("Light");
     break;
   case kore::COMPONENT_MATERIAL:
     b.setColor(QColor(153,97,251));
+    //b.setColor(QColor(253,149,141));
     t.setText("Material");
     break;
   case kore::COMPONENT_TEXTURES:
     b.setColor(QColor(255,254,186));
+    //b.setColor(QColor(255,254,186));
     t.setText("Textures");
     break;
   case kore::COMPONENT_UNKNOWN:

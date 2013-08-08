@@ -13,7 +13,7 @@ koregui::OperationFlow::OperationFlow(QWidget* parent)
   _scene.setParent(this);
   setScene(&_scene);
   setMinimumSize(800,200);
-  setFixedHeight(200);
+  setFixedHeight(120);
 }
 
 koregui::OperationFlow::~OperationFlow() {
@@ -54,7 +54,8 @@ int koregui::OperationFlow
       //nodewidth = initNodeOperations(nodepasses[i], nodewidth);
       nodewidth += 150;
     }*/
-    return nodewidth;
+    stageit->setWidth(nodewidth - startcoord);
+    return nodewidth + 5;
 }
 
 int koregui::OperationFlow
@@ -66,11 +67,12 @@ int koregui::OperationFlow
   int passwidth = startcoord;
   std::vector<kore::NodePass*> & nodepasses =
     pass->getNodePasses();
-  if (nodepasses.size() == 0) passwidth += 155;
+  if (nodepasses.size() == 0) passwidth += 150;
   for (uint i = 0; i < nodepasses.size(); i++) {
     passwidth = initNodeOperations(nodepasses[i], passwidth);
   }
-  return passwidth;
+  stageit->setWidth(passwidth - startcoord);
+  return passwidth + 5;
 }
 
 int koregui::OperationFlow
@@ -82,11 +84,12 @@ int koregui::OperationFlow
   int stagewidth = startcoord;
   std::vector<kore::ShaderProgramPass*> &progpasses =
   stage->getShaderProgramPasses();
-  if (progpasses.size() == 0) stagewidth += 155;
+  if (progpasses.size() == 0) stagewidth += 150;
   for (uint i = 0; i < progpasses.size(); i++) {
    stagewidth = initShaderOperations(progpasses[i], stagewidth);
   }
-  return stagewidth;
+  stageit->setWidth(stagewidth - startcoord);
+  return stagewidth + 5;
 }
 
 void koregui::OperationFlow::mousePressEvent(QMouseEvent * event) {

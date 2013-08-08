@@ -41,5 +41,5 @@ void main()
   viewVecTS.y = dot(camPosWS - pos, b);
   viewVecTS.z = dot(camPosWS - pos, n);
   
-  UV = v_uv0;
+  UV = vec3(v_uv0.x, -v_uv0.y,v_uv0.z);
 }

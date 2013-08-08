@@ -101,13 +101,15 @@ void GLWidget::resizeGL(int x, int y) {
       }
     }
     glViewport(0, 0, width(), height());
+    kore::RenderManager::getInstance()->setScreenResolution(glm::ivec2(x,y));
+    kore::Log::getInstance()->write("[GUI] Render resolution changed to %i x %i\n", width(), height());
 }
 
 void GLWidget::paintGL() {
   std::vector<kore::SceneNode*> node;
-  kore::SceneManager::getInstance()->getSceneNodesByName("Cube", node);
+  kore::SceneManager::getInstance()->getSceneNodesByName("Rob", node);
   for (uint i = 0; i < node.size(); i++) {
-    node[i]->rotate(1.5, glm::vec3(0.0, 1.0, 0.0), kore::SPACE_WORLD);
+    node[i]->rotate(1.0, glm::vec3(0.0, 0.0, 1.0), kore::SPACE_WORLD);
   }
   kore::SceneManager::getInstance()->update();
   // TODO all GL handling is provided by KoRE itself

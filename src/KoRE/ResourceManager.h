@@ -217,10 +217,10 @@ namespace kore {
     std::vector<kore::TextureSampler*> _textureSamplers;
 
     std::map<uint64, Shader*> _shaders;
-    std::map<uint64, Mesh*> _meshes;  // id || mesh
-    std::map<uint64, kore::Texture*> _textures;  // id || texture    
-    std::map<uint64, ShaderProgram*> _shaderPrograms;  // id || program
-    std::map<uint64, kore::FrameBuffer*> _frameBuffers; // name,  || framebuffer
+    std::map<uint64, Mesh*> _meshes;
+    std::map<uint64, kore::Texture*> _textures;
+    std::map<uint64, ShaderProgram*> _shaderPrograms;
+    std::map<uint64, kore::FrameBuffer*> _frameBuffers;
     std::map<uint64, Material*> _materials;
     std::map<uint64, IndexedBuffer*> _indexedBuffers;
 

@@ -89,6 +89,7 @@
       <Filter>GeneratedFiles</Filter>
     </ClInclude>
     <ClInclude Include="src\KoRE_GUI\FlowItem.h" />
+    <ClInclude Include="src\KoRE_GUI\FrameBufferStageAttachable.h" />
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="src\KoRE_GUI\FrameBufferEditor.h" />

@@ -46,6 +46,7 @@ namespace koregui {
     void refresh(void);
     inline int getHeight(void) {return _itemheight;}
     inline int getWidth(void) {return _itemwidth;}
+    inline void setWidth(int w) {prepareGeometryChange();_itemwidth = w;}
     inline EFlowType getType(void) {return _type;}
 
     inline void setFrameBufferStage(kore::FrameBufferStage* stage) {_stage = stage;}

@@ -117,6 +117,8 @@ void kore::FrameBuffer::addTextureAttachment(Texture* tex,
     textureData = &_textureOutputs[_textureOutputs.size() - 1];
   }
 
+  _attachments[attachment] = tex;
+
   kore::RenderManager::getInstance()->bindFrameBuffer(GL_FRAMEBUFFER, _handle);
   kore::RenderManager::getInstance()
     ->bindTexture(tex->getProperties().targetType, _handle);

@@ -35,6 +35,7 @@
 
 #include "KoRE/RenderManager.h"
 #include "KoRE/Operations/ClearOp.h"
+#include "KoRE/Operations/ViewportOp.h"
 
 koregui::FrameBufferStageItem::FrameBufferStageItem(QGraphicsItem* parent)
                                           : _frameBuffer(NULL),
@@ -150,16 +151,41 @@ void koregui::FrameBufferStageItem
   }
 
   std::vector<kore::Operation*>& startop =_bufferstage->getStartupOperations();
-  bool hasclear = false;
+  kore::ClearOp* pCop = NULL;
   for (uint i = 0; i < startop.size(); i++) {
     if (startop[i]->getType() == kore::OP_CLEAR) {
-      hasclear = true;
+      pCop = static_cast<kore::ClearOp*>(startop[i]);
     }
   }
-  if(hasclear) {
-    kore::ClearOp* pCop =
-      new kore::ClearOp(true, true, true, glm::vec4(0.1,0.1,0.1,1.0));
+  if(!pCop) {
+    pCop = new kore::ClearOp(true, true, true, glm::vec4(0.1,0.1,0.1,1.0));
     _bufferstage->addStartupOperation(pCop);
+  }
+  kore::ViewportOp* pVop = NULL;
+  for (uint i = 0; i < startop.size(); i++) {
+    if (startop[i]->getType() == kore::OP_VIEWPORT) {
+      pVop = static_cast<kore::ViewportOp*>(startop[i]);
+    }
+  }
+  if(!pVop) {
+    pVop = new kore::ViewportOp();
+    _bufferstage->addStartupOperation(pCop);
+  }
+  if(_frameBuffer == kore::FrameBuffer::BACKBUFFER){
+    const glm::ivec2& res = kore::RenderManager::getInstance()->getScreenResolution();
+    pVop->connect(glm::ivec4(0, 0, res.x,res.y));
+  } else {
+    uint maxXres = 0;
+    uint maxYres = 0;
+    const std::vector<GLuint> atta = _frameBuffer->getAttachments();
+    for (uint j = 0; j < atta.size(); j++) {
+      const kore::Texture* tex = _frameBuffer->getTexture(atta[j]);
+      uint xres = tex->getProperties().width;
+      uint yres = tex->getProperties().height;
+      if (xres > maxXres) maxXres = xres;
+      if (yres > maxYres) maxYres = yres;
+    }
+    pVop->connect(glm::ivec4(0, 0, maxXres,maxYres));
   }
   _bufferstage->setActiveAttachments(_frameBuffer->getAttachments());
   refresh();

@@ -86,17 +86,17 @@ int main(int argc, char *argv[]) {
   //oview->show();
 
   // demo startup loading
-  kore::ResourceManager::getInstance()->loadScene("./assets/meshes/TestEnv.dae");
+  kore::ResourceManager::getInstance()->loadScene("./assets/meshes/Robot.dae");
   kore::ResourceManager::getInstance()->loadScene("./assets/meshes/FullScreenTriangle.dae");
   std::vector<kore::SceneNode*> finder;
-  kore::SceneManager::getInstance()->getSceneNodesByName("Cube", finder);
+  kore::SceneManager::getInstance()->getSceneNodesByName("Rob", finder);
   kore::SceneNode* cube = (finder.size() > 0) ? finder[0] : NULL;
   finder.clear();
   kore::SceneManager::getInstance()->getSceneNodesByName("Flat", finder);
   kore::SceneNode* flat = (finder.size() > 0) ? finder[0] : NULL;
   kore::Texture* tex = kore::ResourceManager::getInstance()->loadTexture("./assets/textures/checkerboard.png");
-  kore::Texture* tex1 = kore::ResourceManager::getInstance()->loadTexture("./assets/textures/stonewall.png");
-  kore::Texture* tex2 = kore::ResourceManager::getInstance()->loadTexture("./assets/textures/stonewall_NM_height.png");
+  kore::Texture* tex1 = kore::ResourceManager::getInstance()->loadTexture("./assets/textures/RobColor.png");
+  kore::Texture* tex2 = kore::ResourceManager::getInstance()->loadTexture("./assets/textures/RobNormal.png");
   kore::TexturesComponent* pTexComponent = new kore::TexturesComponent;
   if (tex1) pTexComponent->addTexture(tex1);
   if (tex2) pTexComponent->addTexture(tex2);

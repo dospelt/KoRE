@@ -44,6 +44,7 @@ koregui::NodeItem::NodeItem(kore::SceneNode* sceneNode,
 }
 
 koregui::NodeItem::~NodeItem(void) {
+
 }
 
 void koregui::NodeItem::refresh(void) {

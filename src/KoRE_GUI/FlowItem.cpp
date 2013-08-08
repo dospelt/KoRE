@@ -46,7 +46,7 @@ void koregui::FlowItem::refresh(void) {
 }
 
 QRectF koregui::FlowItem::boundingRect() const {
-  return QRectF(0,0,150,35);
+  return QRectF(0,0,_itemwidth,35);
 }
 
 void koregui::FlowItem::paint(QPainter* painter,
@@ -98,7 +98,7 @@ void koregui::FlowItem::paint(QPainter* painter,
     t.setText("UNKNOWN");
   }
   painter->setBrush(b);
-  painter->drawRect(0,0,150,35);
+  painter->drawRect(0,0,_itemwidth,35);
 
   // text
   p.setColor(QColor(33,33,33));

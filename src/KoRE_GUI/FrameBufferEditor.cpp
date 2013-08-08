@@ -1,12 +1,12 @@
-#include "FrameBufferEditor.h"
-#include "KoRE/ResourceManager.h"
-#include "KoRE/Common.h"
-#include "KoRE/Texture.h"
-
 #include <QHBoxLayout>
 #include <QLabel>
 #include <QSizePolicy>
 #include <QCheckBox>
+
+#include "FrameBufferEditor.h"
+#include "KoRE/ResourceManager.h"
+#include "KoRE/Common.h"
+#include "KoRE/Texture.h"
 
 koregui::FrameBufferEditor::FrameBufferEditor(
     koregui::FrameBufferStageItem* stage,

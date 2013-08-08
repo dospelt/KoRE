@@ -62,7 +62,16 @@ void koregui::ShaderInputItem::paint(QPainter* painter,
   QBrush b;
   switch(_input->type) {
     case GL_FLOAT_MAT4:
-      b.setColor(Qt::GlobalColor::green);
+      b.setColor(QColor(35,203,173));
+      break;
+    case GL_FLOAT_VEC3:
+      b.setColor(QColor(252,210,89));
+      break;
+    case GL_FLOAT_VEC2:
+      b.setColor(QColor(244,179,138));
+      break;
+    case GL_SAMPLER_2D:
+      b.setColor(QColor(250,123,28));
       break;
     default : b.setColor(Qt::GlobalColor::red);
   }

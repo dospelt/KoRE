@@ -37,9 +37,7 @@ namespace kore {
     inline const Texture* getTexture(const uint idx)
     const {if (idx >= _vTextures.size()) return NULL; return _vTextures[idx];}
     
-    void addTexture(Texture* tex,
-                    const bool useMipMaps = true,
-                    const TextureSampler* sampler = NULL);
+    void addTexture(Texture* tex);
 
   private:
     std::vector<Texture*> _vTextures;
